@@ -1,4 +1,5 @@
 @echo off
+title uninstaller
 set "folder_name=V-1.11.0"
 
 echo Are you sure you want to uninstall "%folder_name%"? (y/n)
