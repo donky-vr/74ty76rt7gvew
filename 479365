@@ -1,16 +1,39 @@
 @echo off
 title uninstaller
+
 set "folder_name=V-1.11.0"
 
-echo Are you sure you want to uninstall "%folder_name%"? (y/n)
-set /p "confirm="
-if /i "%confirm%"=="y" (
-    echo Uninstalling "%folder_name%"...
-    timeout /t 5 /nobreak >nul
-    rd /s /q "%folder_name%"
-    echo 0 / main folder size
-    echo Press any key to continue...
+echo Are you sure you want to delete %folder_name%?
+echo (y/n)
+set /p "confirmation="
+
+if /i "%confirmation%"=="y" (
+    echo Deleting %folder_name%
+    timeout /t 4 >nul
+
+    rem Display the progress message
+    echo Deleting in process.
+    timeout /t 1 >nul
+    echo Deleting in process.. 
+    timeout /t 1 >nul
+    echo Deleting in process...
+    timeout /t 1 >nul
+
+    rem Delete the folder
+    rmdir /s /q "%folder_name%"
+    if errorlevel 1 (
+        echo Failed to delete %folder_name%.
+    ) else (
+        echo %folder_name% deleted successfully!
+        pause >nul
+    )
+    exit /b
+) else if /i "%confirmation%"=="n" (
+    echo Closing...
+    timeout /t 5 >nul
+    exit /b
 ) else (
-    echo Uninstallation canceled.
-    pause
+    echo Unknown option, please choose y or n!
+    timeout /t 3 >nul
+    exit /b
 )
