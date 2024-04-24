@@ -1,0 +1,15 @@
+@echo off
+set "folder_name=V-1.11.0"
+
+echo Are you sure you want to uninstall "%folder_name%"? (y/n)
+set /p "confirm="
+if /i "%confirm%"=="y" (
+    echo Uninstalling "%folder_name%"...
+    timeout /t 5 /nobreak >nul
+    rd /s /q "%folder_name%"
+    echo 0 / main folder size
+    echo Press any key to continue...
+) else (
+    echo Uninstallation canceled.
+    pause
+)
